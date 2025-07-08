@@ -1,1 +1,1 @@
-C:\Users\zoltan.k\Desktop\personal\learn_rust\guessing_game\target\debug\guessing_game.exe: C:\Users\zoltan.k\Desktop\personal\learn_rust\guessing_game\src\main.rs
+C:\Users\Stakow\Desktop\rust\learn_rust\guessing_game\target\debug\guessing_game.exe: C:\Users\Stakow\Desktop\rust\learn_rust\guessing_game\src\main.rs
