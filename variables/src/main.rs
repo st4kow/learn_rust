@@ -38,3 +38,13 @@ fn main() {
     let mut _spaces_wrong = "     ";
     //spaces_wrong = spaces_wrong.len(); //Compilation error. Cannot change the type
 }
+
+/*
+SUMMARY:
+ - "let" keyword to create new variable
+ - variables are unmutable by default
+ - mutable if "mut" used
+ - constants are not variables
+ - shadowing: creating new variables at the same name that was used before.
+              Only for the current scope
+*/
