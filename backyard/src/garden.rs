@@ -1,0 +1,1 @@
+pub mod vegetables; // This includes src/garden/vegetables.rs, makes it public
