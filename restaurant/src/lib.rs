@@ -40,7 +40,49 @@ mod back_of_house {
     }  
     fn cook_order() {}
 }
+mod customer {
+    pub fn eat_at_restaurant() {
+        //hosting::add_to_waitlist(); // This does not work, because hosting was not brought to scope
+        super::hosting::add_to_waitlist(); // This works because module above brought hosting into scope
+        // OR we could use the "use" keyword in this module to bring hosting into scope
+    }
+}
 
+//use crate::front_of_house::hosting; // This brings hosting into scope
+use crate::front_of_house::hosting::add_to_waitlist; // This brings only the function itself to scope
+                                                     // Not used most of the time. Makes it hard to decide 
+                                                     // Where the function comes.
+// This is used mostly when we bring types into scope
+// For example structs or enums
+use std::collections::HashMap;
+pub fn do_smthg_with_hasmap() {
+    let mut map = HashMap::new();
+    map.insert(1,2);
+}
+
+// If two items with the same name are brought to scope, compiler gives an error.
+// In this case this cannot be done, and only the module need to be "use"d
+// Or ned to use a different name by "as"
+
+/* RE exporting */
+pub use crate::front_of_house::hosting; //TODO it does not work for some reason
+// This brings hosting into scope for every module undert this root module
+// Also affects documentation.
+
+//Using nested paths for use list
+//  use std::cmp::Ordering;
+//  use std::io;
+//Can be written as
+//  use std::{cmp::Ordering, io};
+
+//  use std::io;
+//  use std::io::Write;
+//Can be writte nas
+use std::io::{self, Write};
+
+// Glob operator
+use std::collections::*;
+// Mosty for collections
 
 pub fn eat_at_restaurant() {
     //Absolute path
@@ -62,4 +104,9 @@ pub fn eat_at_restaurant() {
     let order2 = back_of_house::Appetizer::Salad;
     //These are working, because public Enums have public data
     // Reason: Enums are only useful if the data is public
+
+    //Playing with scopes
+    hosting::add_to_waitlist(); //This works, because hosting was brought into scope
+    add_to_waitlist(); // Works, because this function was brought to scope
+
 }
