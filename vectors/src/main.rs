@@ -39,7 +39,40 @@ fn main() {
      Because adding new elmeents might require new memory allocation for the whole vector
      (Vectors stores everything next to each other)
     */
-    
+	  
+	  println!("Iterating over the elements of a vector...");
+	  let v = vec![100, 32, 57];
+	  for i in &v { // foreach. We gave a reference to a collection
+		  println!("{i}"); // i is a reference!
+	  }
+	  let mut v = vec![100, 32, 57];
+	  for i in &mut v {
+		  (*i) = (*i) * 10; // Dereferencing TODO i is a pointer of a reference? Does this question make sense?
+		  //OR *i *= 10;
+	  }
+	  println!("Iterating over modified elements of a vector");
+	  for i in &v {
+		  println!("{i}");
+	  }
+	  
+	  //Using and ENUM to store multiple types
+	  // This is an alternative solution to inheritence! (puttyping multiple type in same vector)
+	  let row = vec![
+		SpreadsheetCell::Int(3),  //Cell0
+		SpreadsheetCell::Text(String::from("blue" ) ),  //Cell1
+		SpreadsheetCell::Float(10.22)        //Cell2
+	  ]
+	  //How do we access these? match! This also ensure we cover every possible case of the enum
+	  //What to do if we do not know what kind of data will be in the vector during runtime?
+	  //   Solution: Trait item
+	  
+	 
+}
+
+enum SpreadsheetCell {
+	Int(i32),    // Option0
+	Float(f64),  // Option1
+	Text(String) // Option2
 }
 
 
