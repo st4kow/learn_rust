@@ -27,7 +27,23 @@ fn main() {
 		}
 	};
 	
-	//Shortcuts for panic
+	//Alternative, using closures
+	let greeting_file = File::open("hello.txt").unwrap_or_else(|error| {
+        if error.kind() == ErrorKind::NotFound {
+            File::create("hello.txt").unwrap_or_else(|error| {
+                panic!("Problem creating the file: {error:?}");
+            })
+        } else {
+            panic!("Problem opening the file: {error:?}");
+        }
+    });
 	
+	//Shortcuts for panic unwrap, expect
+	let greeting_file = File::open("hello.txt").unwrap();
+	// Unwrap return with the content ok Ok(...)
+	// Or if Err, panics
 	
+	let greeting_file = File::open("hello.txt").expect("error using expect");
+	// Expect does the same
+	// But proper panic message can be added
 }
