@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 pub trait Summary {                //Trait CamelCase
 	fn summarize(&self) -> String; //Prototype of funtion that needs to be implemented
 }
@@ -53,3 +55,32 @@ pub fn returns_summarizable() -> impl Summary {
 		repost: true
 	}
 }
+
+// Using Trait Bounds to Conditionally Implement Methods
+//*******************************************************//
+struct Pair<T> {
+    x: T,
+    y: T,
+}
+impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+        Self { x, y }
+    }
+}
+impl<T: Display + PartialOrd> Pair<T> {
+    // These functions are implemented for all the Pair types that have Display and PartialOrd trait
+    fn cmp_display(&self) {
+        if self.x >= self.y {
+            println!("The largest number is x = {}", self.x);
+        } else {
+            println!("The largest number is y = {}", self.y);
+        }
+    }
+}
+
+/*
+impl<T: Display> ToString for T {
+    //Implementing ToString trait for all types that impelment Display
+    // Called blanket
+}
+*/
