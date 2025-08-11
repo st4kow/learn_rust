@@ -1,0 +1,8 @@
+[package]
+name = "adder"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# Defining an explicit dependency to add_one. Cargo does not expect dependency between these by default
+add_one = { path = "../add_one" }

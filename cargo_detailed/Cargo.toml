@@ -1,0 +1,15 @@
+[package]
+name = "cargo_detailed"
+version = "0.1.0"
+edition = "2024"
+
+#Defining level 1 optimizaton for dev build
+[profile.dev]
+opt-level = 0
+
+#Defining level 3 optimizaton for release build
+[profile.release]
+opt-level = 3
+
+[dependencies]
+

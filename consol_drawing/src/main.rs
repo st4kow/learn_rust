@@ -1,13 +1,15 @@
 use colorz::{Colorize, xterm};
 use::array2d::Array2D;
 
+
 fn main() {
-    let mut map = create_new_map(20, 20);
+    let mut map = create_new_map(30, 30);
     //draw_line(2.0, 5.0, 0.0, 10.0, &mut map);
     draw_line(10.0, 10.0, 20.0, 20.0, &mut map);
     draw_section(3.0, 18.0, 10.0, 13.0, &mut map);
     draw_section(3.0, 13.0, 10.0, 18.0, &mut map);
     draw_circle(5.0, 6.0, 4.0, &mut map);
+    draw_circle(10.0, 20.0, 10.0, &mut map);
     print_map(&map);
 }
 fn create_new_map(width: usize, height: usize) -> Array2D<u8>{
